@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap rescap">
+  <Identity Name="RawPreview.Worker" Publisher="CN=RawPreview" Version="1.0.0.0" ProcessorArchitecture="x64" />
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.26100.0" />
+    <PackageDependency Name="Microsoft.WindowsAppRuntime.2" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" MinVersion="2.0.1.0" />
+  </Dependencies>
+  <Properties>
+    <DisplayName>RawPreview Worker</DisplayName>
+    <PublisherDisplayName>RawPreview</PublisherDisplayName>
+    <Logo>Logo.png</Logo>
+  </Properties>
+  <Resources>
+    <Resource Language="en-us" />
+  </Resources>
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+  <Applications>
+    <Application Id="Worker" Executable="RawPreview.Worker.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements AppListEntry="none" DisplayName="RawPreview Worker" Description="RawPreview Worker" BackgroundColor="#202020" Square150x150Logo="Logo.png" Square44x44Logo="Logo.png" />
+    </Application>
+  </Applications>
+  <Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>Photos.Models.CppWinRT.dll</Path>
+        <ActivatableClass ActivatableClassId="Photos.Models.ProviderHelper" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+  </Extensions>
+</Package>

@@ -1,0 +1,15 @@
+<Project>
+  <Target Name="RejectPrivateMicrosoftPayloads" BeforeTargets="Build" Condition="'$(MSBuildProjectName)' != 'ProjectionRunner'">
+    <ItemGroup>
+      <ForbiddenFiles Include="$(MSBuildProjectDirectory)\**\Photos*.dll" />
+      <ForbiddenFiles Include="$(MSBuildProjectDirectory)\**\Photos*.winmd" />
+      <ForbiddenFiles Include="$(MSBuildProjectDirectory)\**\msRAWImage_store.dll" />
+      <ForbiddenFiles Include="$(MSBuildProjectDirectory)\**\Microsoft.RawImageExtension*.appx" />
+      <ForbiddenFiles Include="$(MSBuildProjectDirectory)\**\*.arw" />
+      <ForbiddenFiles Include="$(MSBuildProjectDirectory)\**\*.jpg" />
+      <ForbiddenFiles Include="$(MSBuildProjectDirectory)\**\*.jpeg" />
+      <ForbiddenFiles Include="$(MSBuildProjectDirectory)\**\*.png" />
+    </ItemGroup>
+    <Error Condition="'@(ForbiddenFiles)' != ''" Text="Microsoft Photos or RAW runtime payload detected in repository: @(ForbiddenFiles)" />
+  </Target>
+</Project>
