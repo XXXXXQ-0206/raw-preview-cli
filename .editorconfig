@@ -8,7 +8,14 @@ indent_style = space
 indent_size = 4
 
 [*.cs]
+end_of_line = crlf
 dotnet_style_require_accessibility_modifiers = always:suggestion
+
+[*.sln]
+end_of_line = crlf
+
+[*.csproj]
+end_of_line = crlf
 
 [*.ps1]
 end_of_line = crlf

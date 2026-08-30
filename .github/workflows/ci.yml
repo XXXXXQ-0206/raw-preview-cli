@@ -23,6 +23,8 @@ jobs:
           dotnet-version: 9.0.x
       - name: Restore
         run: dotnet restore RawPreview.sln
+      - name: Format
+        run: dotnet format RawPreview.sln --verify-no-changes --no-restore
       - name: Build
         run: dotnet build RawPreview.sln --configuration Release --no-restore
       - name: Test
