@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0-windows10.0.22621.0</TargetFramework>
+    <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
+    <PublishTrimmed>false</PublishTrimmed>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <AssemblyName>rawpreview</AssemblyName>
+    <RootNamespace>RawPreview.Cli</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.Windows.SDK.NET.Ref" />
+    <ProjectReference Include="..\RawPreview.Worker\RawPreview.Worker.csproj" ReferenceOutputAssembly="false" />
+    <Compile Include="..\RawPreview.Shared\WorkerProtocol.cs" Link="Runtime\WorkerProtocol.cs" />
+  </ItemGroup>
+</Project>

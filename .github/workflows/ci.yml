@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: build-and-test
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Set up .NET
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          dotnet-version: 9.0.x
+      - name: Restore
+        run: dotnet restore RawPreview.sln
+      - name: Build
+        run: dotnet build RawPreview.sln --configuration Release --no-restore
+      - name: Test
+        run: dotnet test RawPreview.sln --configuration Release --no-build --no-restore --logger "console;verbosity=minimal"
+      - name: Repository boundary
+        shell: pwsh
+        run: ./scripts/Test-RepositoryBoundary.ps1

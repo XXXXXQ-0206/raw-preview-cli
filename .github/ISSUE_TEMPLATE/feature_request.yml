@@ -1,0 +1,34 @@
+name: Feature request
+description: Suggest an improvement for RawPreview CLI.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve RawPreview CLI.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem would this feature solve?
+      placeholder: Describe the workflow or limitation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Describe the behavior you would like to see.
+      placeholder: Explain the command, output, or integration.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Include relevant Windows, Photos, Raw Image Extension, or CLI version details.
+      placeholder: Add reproducible details, if available.
+    validations:
+      required: false
